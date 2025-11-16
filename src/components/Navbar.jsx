@@ -19,37 +19,32 @@ export default function Navbar() {
               Leaderboard
             </a>
             <a
-              href="/contest"
+              href="https://contest-board.vercel.app"
               className="transition-colors text-slate-300 hover:text-cyan-300"
             >
               Contests
             </a>
             <a
-              href="/code-analyser"
+              href="https://code-analyser-beta.vercel.app"
               className="transition-colors text-slate-300 hover:text-cyan-300"
             >
               Code Analyser
             </a>
             <a
-              href="/similar-questions"
+              href="https://similar-question-search.vercel.app"
               className="transition-colors text-slate-300 hover:text-cyan-300"
             >
               Similar Qs
             </a>
             <a
-              href="/notes"
+              href="https://gla-notes.vercel.app"
               className="transition-colors text-slate-300 hover:text-cyan-300"
             >
               Notes
             </a>
+            
             <a
-              href="/pyqs"
-              className="transition-colors text-slate-300 hover:text-cyan-300"
-            >
-              PYQs
-            </a>
-            <a
-              href="/company-sheets"
+              href="https://companywise-sheet.vercel.app"
               className="transition-colors text-slate-300 hover:text-cyan-300"
             >
               Company Sheets
