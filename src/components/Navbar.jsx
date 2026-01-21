@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import logo from './image.png';
 
 export default function Navbar() {
@@ -6,10 +7,10 @@ export default function Navbar() {
 
   const navItems = [
     { name: 'Home', href: '#' },
-    { name: 'Practice', href: 'https://example.com/practice' },
+    { name: 'Practice Platform', href: 'https://example.com/practice' },
     { name: 'Contests', href: 'https://example.com/contests' },
-    { name: 'Resume', href: 'https://example.com/resume' },
-    { name: 'Study', href: 'https://example.com/study' },
+    { name: 'Resume Tools', href: 'https://example.com/resume' },
+    { name: 'Study Material', href: 'https://example.com/study' },
     { name: 'Login', href: 'https://example.com/login' }
   ];
 
@@ -32,7 +33,7 @@ export default function Navbar() {
           </div>
           {/* Desktop Menu */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-10 flex items-baseline space-x-6">
               {navItems.map((item) =>
                 <a
                   key={item.name}
@@ -43,7 +44,7 @@ export default function Navbar() {
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
                 </a>
               )}
-              <button className="ml-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-3 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
+              <button className="ml-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
                 Get Started Free
               </button>
             </div>
