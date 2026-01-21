@@ -167,10 +167,17 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950/20 to-slate-950 text-white relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      </div>
+      
       <div className="relative min-h-screen flex flex-col">
         {/* Top bar */}
-        <header className="sticky top-0 z-20 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
+        <header className="sticky top-0 z-20 border-b border-slate-800/50 bg-slate-950/80 backdrop-blur-xl">
           <Navbar />
         </header>
 
@@ -183,9 +190,9 @@ function App() {
               <div className="space-y-6">
                 <button
                   onClick={handleBackToSearch}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900/80 hover:bg-zinc-800/90 border border-zinc-800 hover:border-zinc-600 text-xs md:text-sm text-zinc-200 font-medium transition-all shadow-sm"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-slate-900/90 to-slate-800/90 hover:from-slate-800/90 hover:to-slate-700/90 border border-slate-700/50 hover:border-slate-600/50 text-xs md:text-sm text-slate-200 font-medium transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm group"
                 >
-                  <span className="text-lg">
+                  <span className="text-lg group-hover:-translate-x-1 transition-transform duration-300">
                     ←
                   </span>
                   Back to search

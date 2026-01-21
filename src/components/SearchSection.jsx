@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Search } from 'lucide-react';
+import { Search, Sparkles, ArrowRight } from 'lucide-react';
 
-// NEW: Ultra-polished professional UI with glassmorphism, neon glow, smooth animations
+// Premium professional UI with glassmorphism, neon glow, smooth animations
 export const SearchSection = ({ onSearch, isLoading }) => {
   const [input, setInput] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,74 +19,113 @@ export const SearchSection = ({ onSearch, isLoading }) => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-10">
+    <div className="w-full max-w-4xl mx-auto space-y-12">
       {/* Header */}
-      <div className="text-center space-y-4 animate-fade-in">
-        <p className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-400/30 px-4 py-1.5 text-[11px] tracking-widest text-blue-200 font-medium shadow-sm backdrop-blur-md">
-          <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-ping" />
-          Similar Question Search
-        </p>
+      <div className="text-center space-y-6 animate-fade-in">
+        <div className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 border border-blue-400/30 px-6 py-2.5 text-[11px] tracking-widest text-blue-200 font-medium shadow-lg backdrop-blur-md">
+          <Sparkles className="w-4 h-4 text-blue-400 animate-pulse" />
+          <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">
+            AI-POWERED SEARCH
+          </span>
+          <Sparkles className="w-4 h-4 text-purple-400 animate-pulse delay-1000" />
+        </div>
 
-        <h1 className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-white via-blue-200 to-purple-300 bg-clip-text text-transparent drop-shadow-xl leading-tight">
-          Explore Smart
-          <span className="block mt-1 bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300 bg-clip-text text-transparent">
-            Similar Problems
+        <h1 className="text-6xl md:text-8xl font-black bg-gradient-to-br from-white via-blue-100 to-purple-200 bg-clip-text text-transparent drop-shadow-2xl leading-tight">
+          Find Similar
+          <span className="block mt-2 bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400 bg-clip-text text-transparent">
+            Problems Instantly
           </span>
         </h1>
 
-        <p className="mx-auto max-w-2xl text-sm md:text-base text-slate-200/90 leading-relaxed">
-          Paste a LeetCode URL or type a problem name and get instant suggestions to speed up your preparation.
+        <p className="mx-auto max-w-3xl text-lg md:text-xl text-slate-300/90 leading-relaxed font-light">
+          Transform your coding practice with intelligent problem recommendations. 
+          <span className="block mt-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-medium">
+            Paste a LeetCode URL or type a problem name to discover related challenges.
+          </span>
         </p>
       </div>
 
-      {/* Search Card */}
-      <div className="rounded-2xl border border-zinc-800 bg-zinc-950/80 px-4 py-5 md:px-6 md:py-6 shadow-sm">
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <label className="block text-left text-xs font-medium tracking-[0.18em] text-zinc-400 uppercase">
-            Problem Name / LeetCode URL
-          </label>
+      {/* Premium Search Card */}
+      <div className="relative group">
+        {/* Glow effect */}
+        <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <div className="relative rounded-3xl border border-slate-700/50 bg-gradient-to-br from-slate-900/90 via-slate-800/50 to-slate-900/90 backdrop-blur-xl px-8 py-8 md:px-10 md:py-10 shadow-2xl">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <label className="block text-left text-xs font-bold tracking-[0.3em] text-slate-400 uppercase">
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Problem Name / LeetCode URL
+              </span>
+            </label>
 
-          <div className="flex flex-col sm:flex-row gap-3">
-            <div className="relative flex-1">
-              <input
-                type="text"
-                placeholder="e.g., https://leetcode.com/problems/two-sum/ or two-sum"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="relative flex-1">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-hover:text-blue-400 transition-colors duration-300">
+                  <Search size={20} />
+                </div>
+                <input
+                  type="text"
+                  placeholder="e.g., https://leetcode.com/problems/two-sum/ or two-sum"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onFocus={() => setIsFocused(true)}
+                  onBlur={() => setIsFocused(false)}
+                  disabled={isLoading}
+                  className={`h-14 w-full rounded-2xl border ${isFocused ? 'border-blue-500/50 bg-slate-800/50' : 'border-slate-700/50 bg-slate-900/50'} pl-12 pr-5 text-base md:text-lg text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 backdrop-blur-sm`}
+                />
+                
+                {/* Animated border gradient */}
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 ${isFocused ? 'opacity-100' : ''} transition-opacity duration-300 pointer-events-none`}></div>
+              </div>
+
+              <button
+                type="submit"
                 disabled={isLoading}
-                className="h-11 w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3.5 text-sm md:text-base text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600/60 focus:border-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
-              />
+                className="group relative inline-flex justify-center items-center px-8 py-4 rounded-2xl text-base md:text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 focus:ring-4 focus:ring-blue-500/30 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  {isLoading ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      Searching…
+                    </>
+                  ) : (
+                    <>
+                      Find Similar
+                      <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    </>
+                  )}
+                </span>
+                
+                {/* Button glow effect */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
+              </button>
             </div>
+          </form>
 
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="inline-flex justify-center items-center px-6 py-2.5 rounded-lg text-sm md:text-base font-medium text-white bg-blue-600 hover:bg-blue-500 focus:ring-2 focus:ring-blue-600/60 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <Search size={18} className="mr-2" />
-              {isLoading ? 'Searching…' : 'Find Similar'}
-            </button>
-          </div>
-        </form>
+          {/* Enhanced Examples */}
+          <div className="pt-6 mt-8 border-t border-slate-700/50">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <p className="text-sm md:text-base text-slate-400 font-medium">
+                Quick examples:
+              </p>
 
-        {/* Examples */}
-        <div className="pt-4 mt-5 border-t border-zinc-800">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-            <p className="text-xs md:text-sm text-zinc-400">
-              Try a quick example:
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              {['two-sum', '3sum', '4sum', 'valid-parentheses', 'longest-substring'].map((example) => (
-                <button
-                  key={example}
-                  type="button"
-                  onClick={() => handleExample(example)}
-                  className="px-3 py-1.5 rounded-full text-xs md:text-sm bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-300 hover:text-zinc-50 transition-colors"
-                >
-                  {example}
-                </button>
-              ))}
+              <div className="flex flex-wrap gap-2">
+                {['two-sum', '3sum', '4sum', 'valid-parentheses', 'longest-substring'].map((example, index) => (
+                  <button
+                    key={example}
+                    type="button"
+                    onClick={() => handleExample(example)}
+                    className="group relative px-4 py-2.5 rounded-xl text-sm md:text-base bg-gradient-to-r from-slate-800/50 to-slate-700/50 hover:from-blue-900/50 hover:to-purple-900/50 border border-slate-600/30 hover:border-blue-500/30 text-slate-300 hover:text-slate-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                    style={{
+                      animationDelay: `${index * 100}ms`
+                    }}
+                  >
+                    <span className="relative z-10">{example}</span>
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
